@@ -1,0 +1,75 @@
+@import "variables";
+// breakpoints
+@mixin media-breakpoint-down($name) {
+  $max: map-get($grid-breakpoints, $name);
+  $max: if($max and $max > 0, $max - 0.02, null);
+
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($name) {
+  $min: map-get($grid-breakpoints, $name);
+  $min: if($min and $min > 0, $min - 0.02, null);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($min-name, $max-name) {
+  $min: map-get($grid-breakpoints, $min-name);
+  $max: map-get($grid-breakpoints, $max-name);
+
+  $min: if($min and $min > 0, $min - 0.02, null);
+  $max: if($max and $max > 0, $max - 0.02, null);
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+// animate
+@mixin animated() {
+  transition: all 0.2s ease;
+}
+
+// alignment
+@mixin absolute-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// other
+@mixin placeholder-color($color) {
+  ::placeholder {
+    color: $color;
+  }
+
+  :-ms-input-placeholder {
+    color: $color;
+  }
+
+  ::-ms-input-placeholder {
+    color: $color;
+  }
+}

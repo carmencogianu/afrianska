@@ -1,0 +1,263 @@
+@import "src/styles/utils";
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+  @media (max-width: $tablet-max) {
+    max-width: 100%;
+  }
+  @media (max-width: $phone-max) {
+    max-width: 100%;
+  }
+
+  &.horizontal {
+    flex-direction: row;
+    gap: 20px;
+    max-width: 860px;
+    position: relative;
+    margin-bottom: 32px;
+
+    @media (max-width: $phone-max) {
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    .thumbnailContainer img {
+      width: 300px;
+      @media (max-width: $phone-max) {
+        width: 100%;
+      }
+    }
+
+    .previewContainer {
+      flex-grow: 1;
+      margin-top: 0;
+      max-width: 540px;
+      .previewBox {
+        content {
+          line-height: 20px;
+          margin-bottom: 14px;
+        }
+      }
+      .detailsBox {
+        .iconBox {
+          margin-left: 94px;
+
+          .bookmarkIcon {
+            margin-right: 32px;
+          }
+        }
+      }
+    }
+
+    &.bigger {
+      max-width: 940px;
+      height: 380px;
+      margin-bottom: 30px;
+      @media (max-width: $tablet-max) {
+        height: auto;
+        max-width: 100%;
+        flex-direction: column;
+      }
+
+      .thumbnailContainer {
+        max-width: 540px;
+        height: 380px;
+        order: 1;
+        @media (max-width: $tablet-max) {
+          order: 1;
+          max-width: 100%;
+          height: auto;
+        }
+
+        img {
+          height: 380px;
+          width: 100%;
+          @media (max-width: $tablet-max) {
+            width: auto;
+          }
+          @media (max-width: $phone-max) {
+            width: auto;
+          }
+        }
+      }
+
+      .previewContainer {
+        margin-top: 0;
+        order: -1;
+        @media (max-width: $tablet-max) {
+          order: 1;
+        }
+        @media (max-width: $phone-max) {
+          order: 1;
+        }
+        .previewBox {
+          .title {
+            font-size: 48px;
+            line-height: 58px;
+            margin-bottom: 32px;
+            @media (max-width: $tablet-max) {
+              margin-bottom: 16px;
+            }
+            @media (max-width: $phone-max) {
+              margin-bottom: 16px;
+            }
+          }
+
+          .content {
+            line-height: 26px;
+            margin-bottom: 30px;
+            @media (max-width: $tablet-max) {
+              margin-bottom: 15px;
+            }
+            @media (max-width: $phone-max) {
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+
+      .detailsBox {
+        .iconBox {
+          margin-left: auto;
+
+          .bookmarkIcon {
+            margin-right: 32px;
+          }
+        }
+      }
+    }
+  }
+
+  .previewContainer {
+    display: flex;
+    flex-direction: column;
+    // flex-grow: 1;
+    margin-top: auto;
+    .previewBox {
+      letter-spacing: 1px;
+
+      .title {
+        line-height: 38px;
+        margin-bottom: 16px;
+        @media (max-width: $tablet-max) {
+          margin-bottom: 10px;
+        }
+        @media (max-width: $phone-max) {
+          margin-bottom: 10px;
+        }
+      }
+
+      .content {
+        margin-bottom: 16px;
+        line-height: 26px;
+        @media (max-width: $tablet-max) {
+          margin-bottom: 10px;
+        }
+        @media (max-width: $phone-max) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .detailsBox {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+
+      .authorBox {
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 1px;
+
+        .author {
+          color: $secondary-text-color;
+        }
+
+        .date {
+          color: $primary-text-color-light;
+        }
+      }
+
+      .iconBox {
+        margin-left: auto;
+
+        .bookmarkIcon {
+          margin-right: 32px;
+          height: 24px;
+          color: $primary-color;
+        }
+
+        .shareIcon {
+          height: 24px;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.cardContainer.popup {
+  position: relative;
+  flex-direction: row;
+  gap: 0;
+  max-width: 100%;
+  .xIcon {
+    position: absolute;
+    height: 16px;
+    color: #c0392b;
+    top: 5px;
+    right: 5px;
+  }
+  .chevron {
+    color: #fff;
+    height: 27px;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    transform: translateY(-50%);
+    &.chevronLeft {
+      left: -26px;
+    }
+    &.chevronRight {
+      right: -26px;
+    }
+  }
+  .thumbnailContainer {
+    max-width: 900px;
+    img {
+      // width: ;
+      max-height: 634px;
+    }
+  }
+  .previewContainer {
+    flex-grow: 1;
+    margin-top: 0;
+    padding: 20px;
+    .detailsBox {
+      .authorBox {
+        .author {
+          font-size: 14px;
+        }
+        .date {
+          font-size: 14px;
+        }
+      }
+    }
+    .iconBox {
+      margin-left: auto;
+
+      .bookmarkIcon {
+        margin-right: 32px;
+        height: 20px;
+        color: $primary-color;
+      }
+
+      .shareIcon {
+        height: 20px;
+        color: $primary-color;
+      }
+    }
+  }
+}

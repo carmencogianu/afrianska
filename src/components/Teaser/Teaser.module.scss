@@ -1,0 +1,11 @@
+@import "src/styles/utils";
+
+.teaserOverlay {
+  .teaserContent {
+    margin: 50px auto;
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}

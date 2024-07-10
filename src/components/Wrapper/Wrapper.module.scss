@@ -1,0 +1,25 @@
+@import "src/styles/utils";
+
+.innerWrapper {
+  .verticalWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 54px;
+
+    @media (max-width: $phone-max) {
+      flex-direction: column;
+    }
+  }
+  .seeAllLink {
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 500;
+    color: $button-text-color;
+    margin-bottom: 22px;
+    a {
+      color: $button-text-color;
+    }
+  }
+}

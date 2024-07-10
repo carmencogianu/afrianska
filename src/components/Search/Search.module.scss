@@ -1,0 +1,42 @@
+@import "src/styles/utils";
+
+.searchContainer {
+  padding: 56px 0 44px;
+  .search {
+    background-color: #f4f4f4;
+    width: 100%;
+    border-radius: 10px;
+    height: 56px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $tablet-max) {
+      width: auto;
+    }
+
+    @media (max-width: $phone-max) {
+      width: auto;
+    }
+
+    .magnGlassIcon {
+      height: 17.5px;
+      color: rgba(117, 136, 160);
+    }
+
+    .searchInput {
+      background-color: transparent;
+      border: none;
+
+      flex-grow: 1;
+      font-family: $primary-font;
+      margin-left: 24px;
+      &::placeholder {
+        color: rgba(117, 136, 160);
+        font-size: 16px;
+        font-weight: lighter;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

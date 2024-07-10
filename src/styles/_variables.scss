@@ -1,0 +1,37 @@
+// sizes
+$grid-breakpoints: (
+  xs: 320px,
+  sm: 480px,
+  md: 768px,
+  lg: 990px,
+  xl: 1500px,
+) !default;
+
+$container: 940px;
+$container-laptop: 940px;
+$container-tablet: 768px;
+$laptop-max: 1367px;
+$tablet-max: 1024px;
+$phone-max: 650px;
+$phone-small-max: 320px;
+
+$padding-nav-d: 20px;
+$padding-nav-m: 15px;
+
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap");
+$primary-font: "Open Sans", sans-serif;
+$secondary-font: "Stint Ultra Condensed", serif;
+// color names
+$white: #fff;
+$black: #000;
+$red: #ff0000;
+$blue: #0000ff;
+// color scheme
+$primary-color: #356ead;
+$primary-text-color: #666;
+$primary-text-color-light: #999;
+$secondary-text-color: #1f3f68;
+$tertiary-text-color: $white;
+
+$button-text-color: #5d8bbd;

@@ -1,0 +1,81 @@
+@import "utils";
+// include fonts; font face declarations
+// default typography styles
+h1 {
+  @include media-breakpoint-down(sm) {
+  }
+}
+h2 {
+  font-family: $secondary-font;
+  @include media-breakpoint-down(sm) {
+  }
+}
+h3 {
+  font-family: $secondary-font;
+  font-weight: 400;
+  font-size: 28px;
+  color: $secondary-text-color;
+  @include media-breakpoint-down(sm) {
+  }
+}
+h4 {
+  @include media-breakpoint-down(sm) {
+  }
+}
+h5 {
+  @include media-breakpoint-down(sm) {
+  }
+}
+h6 {
+  @include media-breakpoint-down(sm) {
+  }
+}
+p {
+  font-family: $primary-font;
+  font-weight: 400;
+  font-size: 16px;
+  color: $primary-text-color;
+  @include media-breakpoint-down(sm) {
+  }
+}
+ul,
+ol {
+  @include media-breakpoint-down(sm) {
+  }
+  li {
+    @include media-breakpoint-down(sm) {
+    }
+  }
+}
+ol {
+  list-style: decimal inside;
+}
+ul {
+  list-style: disc inside;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  a {
+    color: $primary-text-color;
+    &:hover {
+      color: $secondary-text-color;
+    }
+  }
+}
+strong {
+  font-weight: bold;
+}
+b {
+  font-family: $secondary-font;
+  font-weight: bold;
+}
+em,
+i {
+  font-style: italic;
+}

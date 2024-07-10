@@ -6,14 +6,14 @@ import Title from "components/Title/Title";
 
 const Wrapper = (props: {
   articleType: string;
-  updateFavorites: (favorites: number[]) => void;
+  updateFavorites: (favorites: { id: number; img: string }[]) => void;
   updateLastSearchResults: (results: [any[], any[]]) => void;
   lastSearchResults: [any[], any[]];
 }) => {
   const [searchResult, setSearchResult] = useState<[any[], any[]]>(
     props.lastSearchResults
   );
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<{ id: number; img: string }[]>([]);
 
   useEffect(() => {
     props.updateFavorites(favorites);
@@ -54,12 +54,33 @@ const Wrapper = (props: {
   const firstCard = popularResults[0];
   const remainingCards = popularResults.slice(1);
 
-  const handleIconToggle = (id: number) => {
+  const handleIconToggle = (data: {
+    id: number;
+    img: string;
+    views: number;
+    tags: string;
+    user: string;
+    likes: number;
+    comments: number;
+    direction: string;
+  }) => {
     setFavorites((prevFavorites) => {
-      if (prevFavorites.includes(id)) {
-        return prevFavorites.filter((favoriteImg) => favoriteImg !== id);
+      if (prevFavorites.find((favorite) => favorite.id === data.id)) {
+        return prevFavorites.filter((favorite) => favorite.id !== data.id);
       } else {
-        return [...prevFavorites, id];
+        return [
+          ...prevFavorites,
+          {
+            id: data.id,
+            img: data.img,
+            views: data.views,
+            tags: data.tags,
+            user: data.user,
+            likes: data.likes,
+            comments: data.comments,
+            direction: data.direction,
+          },
+        ];
       }
     });
   };

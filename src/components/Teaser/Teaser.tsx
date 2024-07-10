@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import Card from "components/Card/Card";
+import Card from "components/Card/Card";
 import styles from "./Teaser.module.scss";
 
-const Teaser = (props: { imgArray: number[]; onClose: () => void }) => {
+const Teaser = (props: { favArray: any[]; onClose: () => void }) => {
   const [visibleImages, setVisibleImages] = useState(4);
 
   const handleClick = () => {
@@ -11,7 +11,7 @@ const Teaser = (props: { imgArray: number[]; onClose: () => void }) => {
 
   const loadMoreImages = () => {
     setVisibleImages((prevVisibleImages) =>
-      Math.min(prevVisibleImages + 4, props.imgArray.length)
+      Math.min(prevVisibleImages + 4, props.favArray.length)
     );
   };
 
@@ -27,16 +27,30 @@ const Teaser = (props: { imgArray: number[]; onClose: () => void }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [props.imgArray.length]);
+  }, [props.favArray.length]);
+
+  const handleIconToggle = (data: any) => {
+    console.log("Icon toggled:", data);
+  };
 
   return (
     <div className={`container`}>
       <div className={styles.teaserOverlay} onClick={handleClick}>
         <div className={styles.teaserContent}>
-          {props.imgArray.slice(0, visibleImages).map((id, index) => (
-            // <img key={index} src="" alt="dummy text" />
-            <p key={index}>{id}</p>
-            // <Card />
+          {props.favArray.slice(0, visibleImages).map((item, index) => (
+            <Card
+              key={index}
+              id={item.id}
+              img={item.img}
+              views={item.views}
+              tags={item.tags}
+              user={item.user}
+              likes={item.likes}
+              comments={item.comments}
+              onIconToggle={handleIconToggle}
+              direction="horizontal"
+              size="bigger"
+            />
           ))}
         </div>
       </div>

@@ -25,7 +25,6 @@ const Search = (props: { onSearchResult: any }) => {
       const data = response?.data?.hits;
       const data1 = response1?.data?.hits;
       const combinedResults: [any[], any[]] = [data, data1];
-      console.log(combinedResults);
       setSearchResult(combinedResults);
       props.onSearchResult(combinedResults);
     } catch (error) {

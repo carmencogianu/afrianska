@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Header, Hero, Wrapper, Teaser } from "components";
 
 function LandingPage() {
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<any[]>([]);
   const [showTeaser, setShowTeaser] = useState<boolean>(false);
   const [lastSearchResults, setLastSearchResults] = useState<[any[], any[]]>([
     [],
@@ -11,18 +11,17 @@ function LandingPage() {
 
   useEffect(() => {
     const savedFavorites = JSON.parse(
-      localStorage.getItem("favoritesArray") || "[]"
+      localStorage.getItem("favoritesArray") || "[{}]"
     );
     if (savedFavorites) {
       setFavorites(savedFavorites);
     }
   }, []);
-
   useEffect(() => {
     localStorage.setItem("favoritesArray", JSON.stringify(favorites));
   }, [favorites]);
 
-  const updateFavorites = (newFavorites: number[]) => {
+  const updateFavorites = (newFavorites: any[]) => {
     setFavorites(newFavorites);
   };
 
@@ -40,14 +39,14 @@ function LandingPage() {
   };
 
   return (
-    <div className="landing-page">
+    <div>
       <Header
         onFavoritesIconClick={handleFavoritesIconClick}
         onHomeIconClick={handleHomeIconClick}
       />
       <Hero />
       {showTeaser ? (
-        <Teaser imgArray={favorites} onClose={() => setShowTeaser(false)} />
+        <Teaser favArray={favorites} onClose={() => setShowTeaser(false)} />
       ) : (
         <Wrapper
           updateFavorites={updateFavorites}

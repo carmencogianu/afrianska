@@ -10,8 +10,18 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Card = (props: {
-  onIconToggle: (id: number) => void;
+interface CardProps {
+  onIconToggle: (data: {
+    id: number;
+    img: string;
+    views: number;
+    tags: string;
+    user: string;
+    likes: number;
+    comments: number;
+    direction: string;
+    size: string;
+  }) => void;
   img: string;
   views: number;
   tags: string;
@@ -21,7 +31,9 @@ const Card = (props: {
   direction: string;
   size: string;
   id: number;
-}) => {
+}
+
+const Card: React.FC<CardProps> = (props) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isIconActive, setIsIconActive] = useState(false);
 
@@ -40,7 +52,7 @@ const Card = (props: {
     </div>
   );
 
-  const renderCardIcons = (id: number) => (
+  const renderCardIcons = () => (
     <div className={styles.detailsBox}>
       <div className={styles.authorBox}>
         <p className={styles.author}>{props.user}</p>
@@ -50,7 +62,7 @@ const Card = (props: {
       </div>
       <div className={styles.iconBox}>
         <FontAwesomeIcon
-          onClick={() => handleIconClick(id)}
+          onClick={() => handleIconClick()}
           icon={faBookmark}
           className={styles.bookmarkIcon}
           style={{ color: isIconActive ? "#1f3f68" : "" }}
@@ -64,10 +76,21 @@ const Card = (props: {
     console.log("arrow clicked", e);
   };
 
-  const handleIconClick = (id: number) => {
+  const handleIconClick = () => {
     setIsIconActive(!isIconActive);
-    props.onIconToggle(id);
+    props.onIconToggle({
+      id: props.id,
+      img: props.img,
+      views: props.views,
+      tags: props.tags,
+      user: props.user,
+      likes: props.likes,
+      comments: props.comments,
+      direction: props.direction,
+      size: props.size,
+    });
   };
+
   return (
     <>
       <div
@@ -85,7 +108,7 @@ const Card = (props: {
         </div>
         <div className={styles.previewContainer}>
           {renderCardContent()}
-          {renderCardIcons(props.id)}
+          {renderCardIcons()}
         </div>
       </div>
       {isPopupOpen && (
@@ -111,7 +134,7 @@ const Card = (props: {
             </div>
             <div className={styles.previewContainer}>
               {renderCardContent()}
-              {renderCardIcons(props.id)}
+              {renderCardIcons()}
             </div>
             <FontAwesomeIcon
               onClick={handleArrowClick}

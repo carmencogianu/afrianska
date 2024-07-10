@@ -11,11 +11,17 @@
   @media (max-width: $phone-max) {
     max-width: 100%;
   }
+  background-color: #fff;
+  box-shadow: 12px 12px 30px #bebebe, -15px -15px 30px #ffffff;
+  overflow: hidden;
+  border-radius: 8px;
 
   &.horizontal {
     flex-direction: row;
     gap: 20px;
     max-width: 860px;
+    // max-width: 100%;
+
     position: relative;
     margin-bottom: 32px;
 
@@ -56,6 +62,7 @@
       max-width: 940px;
       height: 380px;
       margin-bottom: 30px;
+      justify-content: space-between;
       @media (max-width: $tablet-max) {
         height: auto;
         max-width: 100%;
@@ -135,6 +142,7 @@
     display: flex;
     flex-direction: column;
     // flex-grow: 1;
+    padding: 15px;
     margin-top: auto;
     .previewBox {
       letter-spacing: 1px;
@@ -203,6 +211,9 @@
   flex-direction: row;
   gap: 0;
   max-width: 100%;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: hidden;
   .xIcon {
     position: absolute;
     height: 16px;

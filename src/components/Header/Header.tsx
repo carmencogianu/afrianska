@@ -1,17 +1,24 @@
 import React from "react";
 import styles from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faHouse } from "@fortawesome/free-solid-svg-icons";
 
-const Header = (props: { onIconClick: () => void }) => {
+const Header = (props: {
+  onFavoritesIconClick: () => void;
+  onHomeIconClick: () => void;
+}) => {
   return (
     <header className={styles.websiteHeader}>
       <div className={styles.headerContainer}>
-        <img className={styles.logo} src="assets/logo.png" alt="logo" />
+        <FontAwesomeIcon
+          icon={faHouse}
+          className={`${styles.icon} ${styles.logo}`}
+          onClick={props.onHomeIconClick}
+        />
         <FontAwesomeIcon
           icon={faBookmark}
-          className={styles.bookmarkIcon}
-          onClick={props.onIconClick}
+          className={styles.icon}
+          onClick={props.onFavoritesIconClick}
         />
       </div>
     </header>

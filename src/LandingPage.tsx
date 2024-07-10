@@ -4,6 +4,10 @@ import { Header, Hero, Wrapper, Teaser } from "components";
 function LandingPage() {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [showTeaser, setShowTeaser] = useState<boolean>(false);
+  const [lastSearchResults, setLastSearchResults] = useState<[any[], any[]]>([
+    [],
+    [],
+  ]);
 
   useEffect(() => {
     const savedFavorites = JSON.parse(
@@ -22,31 +26,36 @@ function LandingPage() {
     setFavorites(newFavorites);
   };
 
-  const handleHeaderIconClick = () => {
-    if (favorites.length !== 0) setShowTeaser(true);
+  const updateLastSearchResults = (newResults: [any[], any[]]) => {
+    setLastSearchResults(newResults);
   };
 
-  const handleTeaserClose = () => {
+  const handleFavoritesIconClick = () => {
+    if (favorites.length !== 0)
+      setShowTeaser((prevShowTeaser) => !prevShowTeaser);
+  };
+
+  const handleHomeIconClick = () => {
     setShowTeaser(false);
   };
 
-  console.log(favorites);
-
   return (
     <div className="landing-page">
-      <Header onIconClick={handleHeaderIconClick} />
+      <Header
+        onFavoritesIconClick={handleFavoritesIconClick}
+        onHomeIconClick={handleHomeIconClick}
+      />
       <Hero />
       {showTeaser ? (
-        <Teaser imgArray={favorites} onClose={handleTeaserClose} />
+        <Teaser imgArray={favorites} onClose={() => setShowTeaser(false)} />
       ) : (
-        <Wrapper updateFavorites={updateFavorites} articleType={"popular"} />
+        <Wrapper
+          updateFavorites={updateFavorites}
+          updateLastSearchResults={updateLastSearchResults}
+          lastSearchResults={lastSearchResults}
+          articleType={"popular"}
+        />
       )}
-      {/* {!showTeaser && (
-        <Wrapper updateFavorites={updateFavorites} articleType={"popular"} />
-      )}
-      {showTeaser && (
-        <Teaser imgArray={favorites} onClose={handleTeaserClose} />
-      )} */}
     </div>
   );
 }

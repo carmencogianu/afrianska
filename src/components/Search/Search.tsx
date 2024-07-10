@@ -32,7 +32,6 @@ const Search = (props: { onSearchResult: any }) => {
       console.log(error);
     }
   };
-
   const handleChange = (e: any) => {
     e.preventDefault();
     const { value } = e.target;
@@ -41,7 +40,6 @@ const Search = (props: { onSearchResult: any }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("form submitted", inputValue);
     setInputValue("");
     fetchData(inputValue);
   };

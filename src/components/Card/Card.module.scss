@@ -20,8 +20,6 @@
     flex-direction: row;
     gap: 20px;
     max-width: 860px;
-    // max-width: 100%;
-
     position: relative;
     margin-bottom: 32px;
 
@@ -30,10 +28,14 @@
       max-width: 100%;
     }
 
-    .thumbnailContainer img {
-      width: 300px;
-      @media (max-width: $phone-max) {
-        width: 100%;
+    .thumbnailContainer {
+      display: flex;
+      img {
+        height: 100%;
+        width: 300px;
+        @media (max-width: $phone-max) {
+          width: 100%;
+        }
       }
     }
 
@@ -141,7 +143,6 @@
   .previewContainer {
     display: flex;
     flex-direction: column;
-    // flex-grow: 1;
     padding: 15px;
     margin-top: auto;
     .previewBox {
@@ -171,6 +172,7 @@
     }
     .detailsBox {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       margin-top: auto;
 
@@ -238,7 +240,6 @@
   .thumbnailContainer {
     max-width: 900px;
     img {
-      // width: ;
       max-height: 634px;
     }
   }
@@ -258,13 +259,11 @@
     }
     .iconBox {
       margin-left: auto;
-
       .bookmarkIcon {
         margin-right: 32px;
         height: 20px;
         color: $primary-color;
       }
-
       .shareIcon {
         height: 20px;
         color: $primary-color;
